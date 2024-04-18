@@ -1,6 +1,8 @@
 package com.example.trabalhofinal;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,6 +19,10 @@ public class App extends Application {
 		UsuarioAuthority.init();
 		SceneUtil.stage(stage, "login");
 		stage.setTitle(ResourceConfig.bundle.getString("label.nome.aplicacao"));
+
+		ImageView iconView = new ImageView(new Image("C://Users//Joanatas.Fernandes//Pictures//Saved Pictures//fimDeTarde.png"));
+
+		stage.getIcons().add(iconView.getImage());
 		stage.setMaximized(true);
 		stage.show();
 		mainStage = stage;
