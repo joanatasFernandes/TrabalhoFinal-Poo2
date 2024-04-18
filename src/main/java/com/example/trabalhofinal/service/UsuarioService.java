@@ -24,7 +24,7 @@ public class UsuarioService {
 			List<Usuario> all = repository.findAll();
 			if (all.isEmpty()) {
 				repository.salvar(new Usuario(null, "Elias", "123456", "root", Permissao.ADM));
-				repository.salvar(new Usuario(null, "Jonatas", "123456", "root", Permissao.ADM));
+				repository.salvar(new Usuario(null, "Admin", "123456", "root", Permissao.ADM));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class UsuarioService {
 
 	public ServiceResponse salvar(Usuario usuario) {
 		if (usuario.getUserId() != null) {
-			return atulizarUsuario(usuario);
+			return atualizarUsuario(usuario);
 		} else {
 			try {
 				if (validaUsuario(usuario) && repository.salvar(usuario) != null) {
@@ -65,7 +65,7 @@ public class UsuarioService {
 		return new ServiceResponse(bundle.getString("label.falha.salvar.usuario"));
 	}
 
-	public ServiceResponse atulizarUsuario(Usuario usuario) {
+	public ServiceResponse atualizarUsuario(Usuario usuario) {
 		try {
 			if (validaUsuario(usuario) && repository.atualizar(usuario) != null) {
 				return new ServiceResponse(true, bundle.getString("label.usuario.atualizado"));
